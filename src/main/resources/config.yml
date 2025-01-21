@@ -1,0 +1,92 @@
+# =======================
+# Estrocord Plugin Config
+# =======================
+plugin-info:
+  version: 2.3 # Your plugin version
+  authors:
+    - "MazeyMoos0022"
+  official-repo: "https://github.mazeymoos.com/estrocord-plugin"
+
+# ========================
+# Global Flight Settings
+# ========================
+flight:
+  allflight: false # Enable or disable global flight for all players
+  base-radius: 100 # Radius around base where flight is allowed
+  communal-zones:
+    enabled: true # Enable or disable communal fly zones
+
+# ========================
+# Vein-Miner Configuration
+# ========================
+veinminer:
+  enabled: true # Enable or disable vein-mining globally
+  tree-remover:
+    max-blocks: 100 # Maximum number of blocks to vein-mine for trees
+    max-height: 30 # Maximum vertical height for tree vein-mining
+  ore-remover:
+    max-blocks: 100 # Maximum number of blocks to vein-mine for ores
+    max-height: 30 # Maximum vertical height for ore vein-mining
+
+# ========================
+# Spawn Configuration
+# ========================
+spawn:
+  world: "world" # Default world where the spawn is located
+  x: 0.0 # X coordinate of the spawn
+  y: 65.0 # Y coordinate of the spawn
+  z: 0.0 # Z coordinate of the spawn
+  yaw: 0.0 # Orientation (horizontal)
+  pitch: 0.0 # Orientation (vertical)
+
+# ========================
+# Base Configuration
+# ========================
+base-teleport:
+  cooldown-hours: 1 # Cooldown period to set bases
+
+# Player bases and cooldowns
+bases: {}
+base.cooldowns: {}
+
+# ========================
+# Sounds Configuration
+# ========================
+sounds:
+  base: "ENTITY_ENDERMAN_TELEPORT" # Sound to play when teleporting to base
+
+# ========================
+# Playtime Tracking Settings
+# ========================
+playtime-tracking:
+  enabled: true # Enable or disable playtime tracking
+
+# ========================
+# Kitty Command Messages
+# ========================
+kitty-command:
+  messages: # Customize kitty command responses
+    - "mrrp!"
+    - "bwaa!"
+    - "uwu X3 rwar *pounces on you*"
+    - "nya!"
+    - "meow"
+    - ":3"
+    - "rwar"
+    - "X3"
+
+# ========================
+# Permissions Settings
+# ========================
+permissions:
+  enable-setspawn: true # Enable or disable /setspawn permissions
+  enable-visitbase: true # Enable or disable permission checks for visiting bases
+  veinminer:
+    enable-trees: true # Enable VeinMiner for trees
+    enable-ores: true # Enable VeinMiner for ores
+
+# ========================
+# Jail Configuration
+# ========================
+jail:
+  enable-jail-checks: true # Enable jail checks before teleporting or setting bases
