@@ -9,6 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.com.clovelib.CloveLib; // Import CloveLib
 
 public class spawnCommandExecutor implements CommandExecutor {
 
@@ -20,27 +21,29 @@ public class spawnCommandExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Ensure the command is issued by a player
         if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Only players can use this command.");
             return true;
         }
 
-        // Get the spawn location from config
+        // Check with CloveLib if the player is allowed to use the spawn command
+        if (!CloveLib.getInstance().canUseCommand("spawn", player)) {
+            player.sendMessage(ChatColor.RED + "You cannot use this command while jailed!");
+            return true;
+        }
+
         Location spawnLocation = getSpawnLocation();
         if (spawnLocation == null) {
             player.sendMessage(ChatColor.RED + "The server spawn location is not set!");
             return true;
         }
 
-        // Teleport the player to the spawn location
         player.teleport(spawnLocation);
         player.sendMessage(ChatColor.GREEN + "You have been teleported to the server spawn!");
         return true;
     }
 
     private Location getSpawnLocation() {
-        // Check if the spawn is properly configured in config
         if (!plugin.getConfig().contains("spawn.world")) {
             Bukkit.getLogger().warning("Spawn location not found in config!");
             return null;

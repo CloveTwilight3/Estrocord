@@ -34,13 +34,12 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JailPlugin Dependency (System Path to libs) -->
+        <!-- CloveLib Dependency -->
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>jailplugin</artifactId>
-            <version>1.5</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/jailplugin-1.5.jar</systemPath>
+            <groupId>org.com</groupId>
+            <artifactId>CloveLib</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -56,7 +55,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade Plugin to package dependencies if needed -->
+            <!-- Shade Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

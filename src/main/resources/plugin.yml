@@ -2,7 +2,7 @@ name: EstrocordPlugin
 version: 2.3
 main: com.example.estrocord.EstrocordPlugin
 api-version: 1.21
-softdepend: [JailPlugin]
+depend: [CloveLib]
 authors:
   - "MazeyMoos0022"
 website: "https://github.mazeymoos.com/estrocord-plugin"

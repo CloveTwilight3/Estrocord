@@ -8,6 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import com.example.estrocord.EstrocordPlugin;
+import org.com.clovelib.CloveLib;
+
 import java.util.UUID;
 
 public class baseCommandExecutor implements CommandExecutor {
@@ -24,7 +26,8 @@ public class baseCommandExecutor implements CommandExecutor {
             return true;
         }
 
-        if (plugin.isPlayerJailed(player)) {
+        // Check if the player is jailed via CloveLib
+        if (!CloveLib.getInstance().canUseCommand("base", player)) {
             player.sendMessage(ChatColor.RED + "You cannot teleport while jailed!");
             return true;
         }
