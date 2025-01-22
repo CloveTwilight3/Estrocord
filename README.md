@@ -19,9 +19,10 @@ EstrocordPlugin is a Minecraft Paper Plugin designed to enhance the multiplayer 
 ## Installation
 
 1. Download the latest version of EstrocordPlugin from the [Releases](https://github.mazeymoos.com/EstrocordPlugin/releases) page.
-2. Place the `.jar` file in your server's `plugins` directory.
-3. Restart your server.
-4. Check the `plugins/EstrocordPlugin` folder for configuration files and adjust them as needed.
+2. Download and install the required [CloveLib](https://github.com/mazeymoos0022/clovelib/releases) library.
+3. Place the `.jar` files in your server's `plugins` directory.
+4. Restart your server.
+5. Check the `plugins/EstrocordPlugin` folder for configuration files and adjust them as needed.
 
 ---
 
