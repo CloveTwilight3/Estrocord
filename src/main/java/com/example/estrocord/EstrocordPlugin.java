@@ -5,6 +5,7 @@ import com.example.estrocord.spawneggs.*;
 import com.example.estrocord.flight.*;
 import com.example.estrocord.listeners.*;
 import com.example.estrocord.commands.*;
+import com.org.clovelib.CloveLib;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
@@ -24,6 +25,12 @@ public class EstrocordPlugin extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Estrocord plugin is starting...");
+
+        if (com.org.clovelib.CloveLib.getInstance() == null) {
+            getLogger().severe("CloveLib is not initialized! Ensure it is installed and loaded.");
+            getServer().getPluginManager().disablePlugin(this); // Disable plugin if critical
+            return;
+        }
 
         // Load the config file
         saveDefaultConfig();
@@ -64,14 +71,14 @@ public class EstrocordPlugin extends JavaPlugin {
 
     private void registerCommands() {
         // Register command executors
-        getCommand("setspawn").setExecutor(new setSpawnCommandExecutor(this));
-        getCommand("spawn").setExecutor(new spawnCommandExecutor(this));
+        getCommand("setspawn").setExecutor(new ConditionalCommandExecutor(this, "setspawn"));
+        getCommand("spawn").setExecutor(new ConditionalCommandExecutor(this, "spawn"));
         getCommand("tpask").setExecutor(new tpAskCommandExecutor(this));
         getCommand("tpaccept").setExecutor(new tpAcceptCommandExecutor(this));
         getCommand("tpdeny").setExecutor(new tpDenyCommandExecutor(this));
-        getCommand("setbase").setExecutor(new setBaseCommandExecutor(this));
+        getCommand("setbase").setExecutor(new ConditionalCommandExecutor(this, "setbase"));
         getCommand("visitbase").setExecutor(new visitBaseCommandExecutor(this));
-        getCommand("base").setExecutor(new baseCommandExecutor(this));
+        getCommand("base").setExecutor(new ConditionalCommandExecutor(this, "base"));
         getCommand("kitty").setExecutor(new kittyCommandExecutor(this));
         getCommand("kiss").setExecutor(new kissCommandExecutor(this));
         getCommand("playtime").setExecutor(new playtimeCommandExecutor(this));
@@ -82,7 +89,6 @@ public class EstrocordPlugin extends JavaPlugin {
         getCommand("version").setExecutor(new VersionCommandExecutor(this));
         getCommand("estrocordreload").setExecutor(new ReloadCommandExecutor(this));
         getCommand("spawnbook").setExecutor(new SpawnBookCommand());
-
     }
 
     private BaseFlightMain baseFlightMain;
@@ -101,7 +107,23 @@ public class EstrocordPlugin extends JavaPlugin {
 
     // Add and retrieve jailed status for players
     public boolean isPlayerJailed(Player player) {
-        return jailedStatus.getOrDefault(player.getUniqueId(), false);
+        CloveLib cloveLib = CloveLib.getInstance();
+        return cloveLib != null && cloveLib.isPlayerJailed(player.getUniqueId());
+    }
+
+    public boolean canExecuteCommand(Player player, String command) {
+        CloveLib cloveLib = CloveLib.getInstance();
+        if (cloveLib != null && cloveLib.isPlayerJailed(player.getUniqueId())) {
+            switch (command) {
+                case "spawn":
+                case "base":
+                case "setbase":
+                case "baseflight":
+                    player.sendMessage("You cannot execute this command while jailed.");
+                    return false;
+            }
+        }
+        return true;
     }
 
     public Location getBaseLocation(UUID playerUUID) {
@@ -115,7 +137,6 @@ public class EstrocordPlugin extends JavaPlugin {
     public boolean isAllFlightEnabled() {
         return getConfig().getBoolean("allflight", false);
     }
-
 
     private void loadBases() {
         if (!getConfig().contains("bases")) return;
@@ -142,7 +163,4 @@ public class EstrocordPlugin extends JavaPlugin {
 
         saveConfig();
     }
-
-
-
 }

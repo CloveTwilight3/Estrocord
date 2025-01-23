@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import com.example.estrocord.EstrocordPlugin;
-import org.com.clovelib.CloveLib;
+import com.org.clovelib.CloveLib;
 
 import java.util.UUID;
 

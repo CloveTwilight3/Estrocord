@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import com.example.estrocord.EstrocordPlugin;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
