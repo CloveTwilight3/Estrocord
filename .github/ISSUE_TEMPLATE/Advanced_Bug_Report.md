@@ -1,6 +1,10 @@
 ---
 name: Advanced Bug Report
 about: Report a bug with detailed technical information
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 <!-- Please refer to our [Bug Reporting Guide](https://github.com/mazeymoos0022/EstrocordPlugin/CONTRIBUTING.md) before submitting an issue. -->

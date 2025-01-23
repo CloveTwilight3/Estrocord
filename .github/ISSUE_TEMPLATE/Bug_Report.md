@@ -1,6 +1,10 @@
 ---
 name: Bug Report
 about: Report a bug to help us improve
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 <!-- Please refer to our [Bug Reporting Guide](https://github.com/mazeymoos0022/EstrocordPlugin/CONTRIBUTING.md) before submitting an issue. -->
