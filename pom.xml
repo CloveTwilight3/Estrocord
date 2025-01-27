@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>EstrocordPlugin</artifactId>
-    <version>2.4.1</version>
+    <version>2.9</version>
     <packaging>jar</packaging>
 
     <name>EstrocordPlugin</name>
@@ -19,10 +19,22 @@
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
 
+        <!-- Spigot Repository -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+
         <!-- CloveLib GitHub Packages Repository -->
         <repository>
             <id>github-mazeymoos-clovelib</id>
-            <url>https://maven.pkg.github.com/mazeymoos0022/CloveLib</url>
+            <url>https://maven.pkg.github.com/CloveTwilight3/CloveLib</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -40,11 +52,27 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Spigot API Dependency -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- BungeeCord Chat API for TextComponent -->
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-chat</artifactId>
+            <version>1.20-R0.2</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- CloveLib Dependency -->
         <dependency>
             <groupId>com.org.clovelib</groupId>
             <artifactId>clovelib</artifactId>
-            <version>1.0.3</version>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 

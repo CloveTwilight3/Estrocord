@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import com.org.clovelib.CloveLib;
 
 import java.util.UUID;
 
@@ -25,6 +26,11 @@ public class tpAcceptCommandExecutor implements CommandExecutor {
             return true;
         }
 
+        if (!CloveLib.getInstance().canUseCommand(target, "tpaccept")) {
+            target.sendMessage(ChatColor.RED + "You cannot use this command while jailed!");
+            return true;
+        }
+
         tpAskCommandExecutor tpAskExecutor = (tpAskCommandExecutor) plugin.getCommand("tpask").getExecutor();
 
         UUID targetUUID = target.getUniqueId();
@@ -33,20 +39,17 @@ public class tpAcceptCommandExecutor implements CommandExecutor {
             return true;
         }
 
-        // Fetch the teleport request details
         TeleportRequest request = tpAskExecutor.getRequest(targetUUID);
 
-        // Teleport the requester to the target
         Player requester = plugin.getServer().getPlayer(request.getRequesterUUID());
         if (requester == null || !requester.isOnline()) {
             target.sendMessage(ChatColor.RED + "The requester is no longer online.");
-            tpAskExecutor.removeRequest(targetUUID); // Remove invalid request
+            tpAskExecutor.removeRequest(targetUUID);
             return true;
         }
 
-        // Complete teleport
         requester.teleport(target.getLocation());
-        tpAskExecutor.removeRequest(targetUUID); // Remove the completed request
+        tpAskExecutor.removeRequest(targetUUID);
 
         requester.sendMessage(ChatColor.GREEN + "Teleport request accepted by " + ChatColor.AQUA + target.getName() + ChatColor.GREEN + "!");
         target.sendMessage(ChatColor.GREEN + "You have accepted the teleport request from " + ChatColor.AQUA + requester.getName() + ChatColor.GREEN + ".");

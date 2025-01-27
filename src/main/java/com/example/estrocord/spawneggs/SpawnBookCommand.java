@@ -1,7 +1,9 @@
 package com.example.estrocord.spawneggs;
 
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -27,12 +29,23 @@ public class SpawnBookCommand implements org.bukkit.command.CommandExecutor {
         meta.setTitle("§6Spawn Egg Recipes");
         meta.setAuthor("§bEstrocord");
 
+        // Create contents page with clickable links
+        TextComponent contentsPage = new TextComponent("§l§6Spawn Egg Recipes\n\n§r");
+        for (SpawnEggRecipes recipe : SpawnEggRecipes.values()) {
+            TextComponent recipeLink = new TextComponent("§n§e" + recipe.name() + "§r\n");
+            recipeLink.setClickEvent(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, String.valueOf(getRecipePageNumber(recipe))));
+            recipeLink.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                    new ComponentBuilder("Click to view " + recipe.name() + " recipe").create()));
+            contentsPage.addExtra(recipeLink);
+            contentsPage.addExtra("\n");
+        }
+
         // Add contents page
-        meta.addPage(generateContentsPage());
+        meta.spigot().addPage(new TextComponent[] { contentsPage });
 
         // Add pages for each mob recipe
         for (SpawnEggRecipes recipe : SpawnEggRecipes.values()) {
-            meta.addPage(generateRecipePage(recipe));
+            meta.spigot().addPage(generateRecipePage(recipe));
         }
 
         // Set the book metadata
@@ -45,34 +58,35 @@ public class SpawnBookCommand implements org.bukkit.command.CommandExecutor {
         return true;
     }
 
-    private String generateContentsPage() {
-        StringBuilder contents = new StringBuilder("§l§6Spawn Egg Recipes\n\n§r");
-
-        for (SpawnEggRecipes recipe : SpawnEggRecipes.values()) {
-            contents.append("§n§e").append(recipe.name()).append("§r\n")
-                    .append("§a[Click to see recipe]\n\n");
-        }
-        return contents.toString();
+    private int getRecipePageNumber(SpawnEggRecipes recipe) {
+        // Add 1 to account for the contents page
+        return SpawnEggRecipes.valueOf(recipe.name()).ordinal() + 2;
     }
 
-    private String generateRecipePage(SpawnEggRecipes mobRecipe) {
-        StringBuilder page = new StringBuilder();
-
-        page.append("§l§6").append(mobRecipe.name()).append(" Recipe\n\n§r");
+    private TextComponent[] generateRecipePage(SpawnEggRecipes mobRecipe) {
+        TextComponent page = new TextComponent();
+        page.addExtra("§l§6" + mobRecipe.name() + " Recipe\n\n§r");
 
         String imageUrl = getImageUrl(mobRecipe.name());
         if (imageUrl == null) {
-            page.append("§cI haven't got a craft yet!§r\n\n");
+            page.addExtra("§cI haven't got a craft yet!§r\n\n");
         } else {
-            page.append("§a[Click to view full recipe]\n\n");
-            TextComponent link = new TextComponent("§b§nView Image");
-            link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, imageUrl));
-            page.append(link.toLegacyText());
+            TextComponent imageLink = new TextComponent("§b§nView Image");
+            imageLink.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, imageUrl));
+            imageLink.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                    new ComponentBuilder("Click to view full recipe image").create()));
+            page.addExtra("§a[Click to view full recipe]\n\n");
+            page.addExtra(imageLink);
+            page.addExtra("\n");
         }
 
-        page.append("\n§a[Return to Contents]\n");
+        TextComponent contentsLink = new TextComponent("\n§a[Return to Contents]");
+        contentsLink.setClickEvent(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, "1"));
+        contentsLink.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                new ComponentBuilder("Return to Contents page").create()));
+        page.addExtra(contentsLink);
 
-        return page.toString();
+        return new TextComponent[] { page };
     }
 
     private String getImageUrl(String mobName) {

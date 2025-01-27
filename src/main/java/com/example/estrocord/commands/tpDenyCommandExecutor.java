@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import com.org.clovelib.CloveLib;
 
 import java.util.UUID;
 
@@ -25,6 +26,11 @@ public class tpDenyCommandExecutor implements CommandExecutor {
             return true;
         }
 
+        if (!CloveLib.getInstance().canUseCommand(target, "tpdeny")) {
+            target.sendMessage(ChatColor.RED + "You cannot use this command while jailed!");
+            return true;
+        }
+
         tpAskCommandExecutor tpAskExecutor = (tpAskCommandExecutor) plugin.getCommand("tpask").getExecutor();
 
         UUID targetUUID = target.getUniqueId();
@@ -33,17 +39,15 @@ public class tpDenyCommandExecutor implements CommandExecutor {
             return true;
         }
 
-        // Fetch the teleport request details
         TeleportRequest request = tpAskExecutor.getRequest(targetUUID);
         Player requester = plugin.getServer().getPlayer(request.getRequesterUUID());
 
-        // Notify both players
         if (requester != null && requester.isOnline()) {
             requester.sendMessage(ChatColor.RED + "Your teleport request to " + ChatColor.AQUA + target.getName() + ChatColor.RED + " was denied.");
         }
 
         target.sendMessage(ChatColor.YELLOW + "You have denied the teleport request.");
-        tpAskExecutor.removeRequest(targetUUID); // Clean up the denied request
+        tpAskExecutor.removeRequest(targetUUID);
         return true;
     }
 }

@@ -1,10 +1,10 @@
 name: EstrocordPlugin
-version: 2.4.1
+version: 2.9
 main: com.example.estrocord.EstrocordPlugin
 api-version: 1.21
 depend: [CloveLib]
 authors:
-  - "MazeyMoos0022"
+  - "CloveTwilight3"
 website: "https://github.mazeymoos.com/estrocord-plugin"
 
 

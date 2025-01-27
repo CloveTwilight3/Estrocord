@@ -19,14 +19,13 @@ public class EstrocordPlugin extends JavaPlugin {
     private final Map<UUID, Long> playtimeMap = new HashMap<>();
     private final Map<UUID, Long> loginTimestamps = new HashMap<>();
     private final Map<UUID, Location> bases = new HashMap<>();
-    private final Map<UUID, Boolean> jailedStatus = new HashMap<>(); // Example for jailed status
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Estrocord plugin is starting...");
 
-        if (com.org.clovelib.CloveLib.getInstance() == null) {
+        if (CloveLib.getInstance() == null) {
             getLogger().severe("CloveLib is not initialized! Ensure it is installed and loaded.");
             getServer().getPluginManager().disablePlugin(this); // Disable plugin if critical
             return;
@@ -48,7 +47,7 @@ public class EstrocordPlugin extends JavaPlugin {
         new UpdateChecker(this, githubApiUrl).checkForUpdates();
 
         // Flight
-        baseFlightMain = new BaseFlightMain(this);
+        BaseFlightMain baseFlightMain = new BaseFlightMain(this);
         baseFlightMain.onEnable();
         getServer().getPluginManager().registerEvents(new FlightListener(baseFlightMain, this), this);
         new FlightCheckTask(baseFlightMain, this).runTaskTimer(this, 20L, 20L);
@@ -72,13 +71,13 @@ public class EstrocordPlugin extends JavaPlugin {
     private void registerCommands() {
         // Register command executors
         getCommand("setspawn").setExecutor(new ConditionalCommandExecutor(this, "setspawn"));
-        getCommand("spawn").setExecutor(new ConditionalCommandExecutor(this, "spawn"));
+        getCommand("spawn").setExecutor(new spawnCommandExecutor(this));
         getCommand("tpask").setExecutor(new tpAskCommandExecutor(this));
         getCommand("tpaccept").setExecutor(new tpAcceptCommandExecutor(this));
         getCommand("tpdeny").setExecutor(new tpDenyCommandExecutor(this));
         getCommand("setbase").setExecutor(new ConditionalCommandExecutor(this, "setbase"));
         getCommand("visitbase").setExecutor(new visitBaseCommandExecutor(this));
-        getCommand("base").setExecutor(new ConditionalCommandExecutor(this, "base"));
+        getCommand("base").setExecutor(new baseCommandExecutor(this));
         getCommand("kitty").setExecutor(new kittyCommandExecutor(this));
         getCommand("kiss").setExecutor(new kissCommandExecutor(this));
         getCommand("playtime").setExecutor(new playtimeCommandExecutor(this));
@@ -90,8 +89,6 @@ public class EstrocordPlugin extends JavaPlugin {
         getCommand("estrocordreload").setExecutor(new ReloadCommandExecutor(this));
         getCommand("spawnbook").setExecutor(new SpawnBookCommand());
     }
-
-    private BaseFlightMain baseFlightMain;
 
     public Map<UUID, Long> getPlaytimeMap() {
         return playtimeMap;
@@ -111,31 +108,12 @@ public class EstrocordPlugin extends JavaPlugin {
         return cloveLib != null && cloveLib.isPlayerJailed(player.getUniqueId());
     }
 
-    public boolean canExecuteCommand(Player player, String command) {
-        CloveLib cloveLib = CloveLib.getInstance();
-        if (cloveLib != null && cloveLib.isPlayerJailed(player.getUniqueId())) {
-            switch (command) {
-                case "spawn":
-                case "base":
-                case "setbase":
-                case "baseflight":
-                    player.sendMessage("You cannot execute this command while jailed.");
-                    return false;
-            }
-        }
-        return true;
-    }
-
     public Location getBaseLocation(UUID playerUUID) {
         return bases.get(playerUUID); // Retrieve the base location from the map
     }
 
     public boolean hasBase(UUID playerUUID) {
         return bases.containsKey(playerUUID);
-    }
-
-    public boolean isAllFlightEnabled() {
-        return getConfig().getBoolean("allflight", false);
     }
 
     private void loadBases() {

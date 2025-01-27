@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
+import com.org.clovelib.CloveLib;
 
 public class tpAskCommandExecutor implements CommandExecutor {
 
@@ -24,6 +25,11 @@ public class tpAskCommandExecutor implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player requester)) { // Only a player can execute this command
             sender.sendMessage(ChatColor.RED + "Only players can use this command!");
+            return true;
+        }
+
+        if (!CloveLib.getInstance().canUseCommand(requester, "tpask")) {
+            requester.sendMessage(ChatColor.RED + "You cannot use this command while jailed!");
             return true;
         }
 

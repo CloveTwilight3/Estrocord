@@ -26,8 +26,7 @@ public class baseCommandExecutor implements CommandExecutor {
             return true;
         }
 
-        // Check if the player is jailed via CloveLib
-        if (!CloveLib.getInstance().canUseCommand("base", player)) {
+        if (!CloveLib.getInstance().canUseCommand(player, "base")) {
             player.sendMessage(ChatColor.RED + "You cannot teleport while jailed!");
             return true;
         }

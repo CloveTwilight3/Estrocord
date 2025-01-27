@@ -1,4 +1,3 @@
-// src/main/java/com/example/estrocord/commands/VisitBaseCommandExecutor.java
 package com.example.estrocord.commands;
 
 import org.bukkit.ChatColor;
@@ -9,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import com.example.estrocord.EstrocordPlugin;
+import com.org.clovelib.CloveLib;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -27,9 +28,8 @@ public class visitBaseCommandExecutor implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        // Permission Check
-        if (!visitor.hasPermission("cutiecord.visitbase")) {
-            visitor.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+        if (!CloveLib.getInstance().canUseCommand(visitor, "visitbase")) {
+            visitor.sendMessage(ChatColor.RED + "You cannot use this command while jailed!");
             return true;
         }
 
@@ -58,8 +58,7 @@ public class visitBaseCommandExecutor implements CommandExecutor, TabCompleter {
                     ChatColor.GREEN + "'s base!");
         } else {
             visitor.sendMessage(ChatColor.RED + "Failed to teleport to " +
-                    ChatColor.YELLOW + target.getName() +
-                    ChatColor.RED + "'s base. Please try again later!");
+                    ChatColor.YELLOW + target.getName() + ChatColor.RED + "'s base. Please try again later!");
         }
         return true;
     }
@@ -68,12 +67,10 @@ public class visitBaseCommandExecutor implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
 
-        // Only provide tab completions if the sender has permission
         if (sender instanceof Player && sender.hasPermission("cutiecord.visitbase")) {
             if (args.length == 1) {
                 String partialName = args[0].toLowerCase();
                 for (Player player : plugin.getServer().getOnlinePlayers()) {
-                    // Only show players who have bases set
                     if (plugin.getBases().containsKey(player.getUniqueId()) &&
                             player.getName().toLowerCase().startsWith(partialName)) {
                         completions.add(player.getName());

@@ -27,7 +27,7 @@ public class spawnCommandExecutor implements CommandExecutor {
         }
 
         // Check with CloveLib if the player is allowed to use the spawn command
-        if (!CloveLib.getInstance().canUseCommand("spawn", player)) {
+        if (!CloveLib.getInstance().canUseCommand(player, "spawn")) {
             player.sendMessage(ChatColor.RED + "You cannot use this command while jailed!");
             return true;
         }
