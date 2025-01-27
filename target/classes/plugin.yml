@@ -1,0 +1,123 @@
+name: EstrocordPlugin
+version: 2.9
+main: com.example.estrocord.EstrocordPlugin
+api-version: 1.21
+depend: [CloveLib]
+authors:
+  - "CloveTwilight3"
+website: "https://github.mazeymoos.com/estrocord-plugin"
+
+
+# Commands
+commands:
+  spawnbook:
+    description: Gives a book showing all mob crafts.
+    usage: /spawnbook
+  version:
+    description: Display the plugin version and credits.
+  setspawn:
+    description: Set the spawn location
+    permission: estrocord.setspawn
+  spawn:
+    description: Teleport to the spawn location
+  estrocordreload:
+    description: Reload the estrocord plugin configuration
+    usage: /estrocordcordreload
+    permission: estrocordcord.reload
+    permission-message: §cYou do not have permission to reload this plugin!
+  tpask:
+    description: Ask to tp to another player
+    usage: /tpask <player>
+    permission: estrocord.tpask
+    permission-message: §cYou don't have permission to use this command!
+  tpaccept:
+    description: Accept a tp request
+    usage: /tpaccept
+    permission: estrocord.tpaccept
+    permission-message: §cYou don't have permission to use this command!
+  tpdeny:
+    description: Deny a tp request
+    usage: /tpdeny
+    permission: estrocord.tpdeny
+    permission-message: §cYou don't have permission to use this command!
+  playtime:
+    description: Check your total playtime on the server.
+    usage: /playtime
+    permission: estrocord.playtime
+    permission-message: §cYou don't have permission to use this command!
+  estrocord:
+    description: Show help information for EstrocordPlugin commands
+    usage: /estrocord <page>
+    permission: estrocord.use
+    aliases: [ ec ]
+  setbase:
+    description: Set your base location
+    usage: /setbase
+  base:
+    description: Teleport to your saved base location
+    usage: /base
+  visitbase:
+    description: Teleport to another player's base location
+    usage: /visitbase <player>
+    permission: estrocord.visitbase
+    permission-message: §cYou don't have permission to use this command!
+  kiss:
+    description: Kiss another player
+    usage: /kiss <player>
+    permission: estrocord.kiss
+    permission-message: §cYou don't have permission to use this command!
+  kitty:
+    description: Send a cute kitty message
+    usage: /kitty
+    permission: estrocord.kitty
+    permission-message: §cYou don't have permission to use this command!
+  veinminer:
+    description: Toggle vein mining for ores or trees
+    usage: /veinminer <ores|trees>
+  basefly:
+    description: Toggle flight within base radius
+    usage: /basefly <on|off>
+  flyzone:
+    description: Create a communal flight zone
+    usage: /flyzone <x1> <y1> <z1> <x2> <y2> <z2> <name>
+    permission: estrocord.flyzone
+  rmflyzone:
+    description: Remove a communal flight zone
+    usage: /rmflyzone <name>
+    permission: estrocord.flyzone
+
+# Permissions
+permissions:
+  estrocord.reload:
+    description: Allows reloading of the Cutiecord plugin.
+    default: op
+  estrocord.visitbase:
+    description: Allows players to teleport to other players' bases.
+    default: op
+  estrocord.setspawn:
+    description: Allows players to set spawn.
+    default: op
+  estrocord.kiss:
+    description: Allows players to use the kiss command.
+    default: true
+  estrocord.kitty:
+    description: Allows players to use the kitty command.
+    default: true
+  estrocord.playtime:
+    description: Allows players to check their playtime.
+    default: true
+  estrocord.tpask:
+    description: Allows player to ask to tp to another player.
+    default: true
+  estrocord.tpaccept:
+    description: Allows a player to accept a tp request.
+    default: true
+  estrocord.tpdeny:
+    description: Allows a player to deny a tp request.
+    default: true
+  estrocord.use:
+    description: Allows a player to see the help section.
+    default: true
+  estrocord.flyzone:
+    description: Permission to manage communal fly zones
+    default: op

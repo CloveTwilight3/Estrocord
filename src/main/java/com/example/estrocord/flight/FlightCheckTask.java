@@ -22,12 +22,11 @@ public class FlightCheckTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        boolean allFlightEnabled = estrocordPlugin.isAllFlightEnabled();
+        boolean allFlightEnabled = estrocordPlugin.getConfig().getBoolean("AllFlight");
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             UUID playerUUID = player.getUniqueId();
 
-            // Check if allflight is enabled
             if (allFlightEnabled) {
                 if (!player.getAllowFlight()) {
                     player.setAllowFlight(true);
@@ -36,7 +35,6 @@ public class FlightCheckTask extends BukkitRunnable {
                 continue;
             }
 
-            // Skip checks for players in spectator or creative mode
             if (player.getGameMode() == GameMode.SPECTATOR || player.getGameMode() == GameMode.CREATIVE) {
                 if (!player.getAllowFlight()) {
                     player.setAllowFlight(true);
@@ -47,7 +45,6 @@ public class FlightCheckTask extends BukkitRunnable {
             Location playerLocation = player.getLocation();
             boolean inCommunalZone = false;
 
-            // Check if the player is within any communal fly zone
             for (BaseFlightMain.FlyZone zone : flightMain.getCommunalFlyZones().values()) {
                 if (zone.isWithinZone(playerLocation)) {
                     inCommunalZone = true;
@@ -63,7 +60,6 @@ public class FlightCheckTask extends BukkitRunnable {
                 continue;
             }
 
-            // Check if the player is within their base radius
             Location baseLocation = estrocordPlugin.getBaseLocation(playerUUID);
             if (baseLocation != null && baseLocation.getWorld().equals(playerLocation.getWorld())) {
                 double distance = baseLocation.distance(playerLocation);

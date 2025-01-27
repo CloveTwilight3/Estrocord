@@ -26,8 +26,7 @@ public class FlightListener implements Listener {
         Player player = event.getPlayer();
         UUID playerUUID = player.getUniqueId();
 
-        // Check if allflight is enabled
-        if (estrocordPlugin.isAllFlightEnabled()) {
+        if (estrocordPlugin.getConfig().getBoolean("AllFlight")) {
             if (!player.getAllowFlight()) {
                 player.setAllowFlight(true);
                 player.sendMessage(ChatColor.GREEN + "Flight enabled globally.");
@@ -35,7 +34,6 @@ public class FlightListener implements Listener {
             return;
         }
 
-        // Skip checks for players in spectator or creative mode
         if (player.getGameMode() == GameMode.SPECTATOR || player.getGameMode() == GameMode.CREATIVE) {
             if (!player.getAllowFlight()) {
                 player.setAllowFlight(true);
@@ -46,7 +44,6 @@ public class FlightListener implements Listener {
         Location playerLocation = player.getLocation();
         boolean inCommunalZone = false;
 
-        // Check if the player is within any communal fly zone
         for (BaseFlightMain.FlyZone zone : flightMain.getCommunalFlyZones().values()) {
             if (zone.isWithinZone(playerLocation)) {
                 inCommunalZone = true;
@@ -62,7 +59,6 @@ public class FlightListener implements Listener {
             return;
         }
 
-        // Check if the player is within their base radius
         Location baseLocation = estrocordPlugin.getBaseLocation(playerUUID);
         if (baseLocation != null && baseLocation.getWorld().equals(playerLocation.getWorld())) {
             double distance = baseLocation.distance(playerLocation);

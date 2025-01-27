@@ -70,12 +70,12 @@ public class EstrocordPlugin extends JavaPlugin {
 
     private void registerCommands() {
         // Register command executors
-        getCommand("setspawn").setExecutor(new ConditionalCommandExecutor(this, "setspawn"));
+        getCommand("setspawn").setExecutor(new setSpawnCommandExecutor(this));
         getCommand("spawn").setExecutor(new spawnCommandExecutor(this));
         getCommand("tpask").setExecutor(new tpAskCommandExecutor(this));
         getCommand("tpaccept").setExecutor(new tpAcceptCommandExecutor(this));
         getCommand("tpdeny").setExecutor(new tpDenyCommandExecutor(this));
-        getCommand("setbase").setExecutor(new ConditionalCommandExecutor(this, "setbase"));
+        getCommand("setbase").setExecutor(new setBaseCommandExecutor(this));
         getCommand("visitbase").setExecutor(new visitBaseCommandExecutor(this));
         getCommand("base").setExecutor(new baseCommandExecutor(this));
         getCommand("kitty").setExecutor(new kittyCommandExecutor(this));
