@@ -14,7 +14,8 @@ To report a bug, please go the [Issues](https://github.com/mazeymoos0022/Estroco
 
 - **TPAsk System**: Players can request and accept teleportation easily.
 - **Base & Baseflight System**: Create bases and enable flight within specific zones.
-- **Craftable Spawn Eggs**: Players can craft spawn eggs for various mobs.
+- **Craftable Spawn Eggs**: Players can craft all spawn eggs for all mobs. Yes, even the Ender Dragon and Withers.
+    - To see all crafts go to [the spawn egg crafts folder!](https://github.com/CloveTwilight3/EstrocordPlugin/tree/main/spawn_egg_crafts) 
 - **Kiss & Kitty Commands**: Fun social commands to interact with other players.
 - **Flight Zones**: Define areas where players can fly.
 - **Veinminer**: Mine entire veins of ores in one go.
