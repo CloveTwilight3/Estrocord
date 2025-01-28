@@ -2,7 +2,7 @@
 # Estrocord Plugin Config
 # =======================
 plugin-info:
-  version: 2.9 # Your plugin version
+  version: 3.0 # Your plugin version - DO NOT CHANGE!
   authors:
     - "MazeyMoos0022"
   official-repo: "https://github.mazeymoos.com/estrocord-plugin"
