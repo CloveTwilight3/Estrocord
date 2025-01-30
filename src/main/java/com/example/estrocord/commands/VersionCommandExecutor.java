@@ -16,11 +16,19 @@ public class VersionCommandExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        String commonMessage =
+                ChatColor.AQUA + "Es" +
+                ChatColor.LIGHT_PURPLE + "tro" +
+                ChatColor.WHITE + "cor" +
+                ChatColor.LIGHT_PURPLE + "dPl" +
+                ChatColor.AQUA + "ugin" +
+                ChatColor.WHITE + " is starting up...";
+
         String version = plugin.getDescription().getVersion();
         String authors = String.join(", ", plugin.getDescription().getAuthors());
         String website = plugin.getDescription().getWebsite();
 
-        sender.sendMessage(ChatColor.GOLD + "======== " + ChatColor.GREEN + "Estrocord Plugin Info" + ChatColor.GOLD + " ========");
+        sender.sendMessage(ChatColor.GOLD + "======== " + commonMessage + ChatColor.GREEN + " Plugin Info" + ChatColor.GOLD + " ========");
         sender.sendMessage(ChatColor.YELLOW + "Version: " + ChatColor.WHITE + version);
         sender.sendMessage(ChatColor.YELLOW + "Authors: " + ChatColor.WHITE + authors);
         if (website != null && !website.isEmpty()) {
