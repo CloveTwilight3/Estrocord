@@ -26,8 +26,7 @@ public class EstrocordCommandExecutor implements CommandExecutor {
                 ChatColor.LIGHT_PURPLE + "tro" +
                 ChatColor.WHITE + "cor" +
                 ChatColor.LIGHT_PURPLE + "dPl" +
-                ChatColor.AQUA + "ugin" +
-                ChatColor.WHITE + " is starting up...";
+                ChatColor.AQUA + "ugin";
 
         // Page 1
         helpPages.add(ChatColor.GOLD + "======== " + commonMessage + ChatColor.GREEN + " Help (Page 1/2)" + ChatColor.GOLD + " ========\n"

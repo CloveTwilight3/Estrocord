@@ -21,8 +21,7 @@ public class VersionCommandExecutor implements CommandExecutor {
                 ChatColor.LIGHT_PURPLE + "tro" +
                 ChatColor.WHITE + "cor" +
                 ChatColor.LIGHT_PURPLE + "dPl" +
-                ChatColor.AQUA + "ugin" +
-                ChatColor.WHITE + " is starting up...";
+                ChatColor.AQUA + "ugin";
 
         String version = plugin.getDescription().getVersion();
         String authors = String.join(", ", plugin.getDescription().getAuthors());
