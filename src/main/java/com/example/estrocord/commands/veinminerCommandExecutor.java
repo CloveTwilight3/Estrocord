@@ -37,14 +37,14 @@ public class veinminerCommandExecutor implements CommandExecutor {
 
         switch (option) {
             case "ores" -> {
-                boolean isEnabled = oreVeinMinerEnabled.getOrDefault(playerUUID, false);
+                boolean isEnabled = oreVeinMinerEnabled.getOrDefault(playerUUID, true);
                 oreVeinMinerEnabled.put(playerUUID, !isEnabled);
                 player.sendMessage(ChatColor.GREEN + "VeinMining for ores is now " +
                         (isEnabled ? ChatColor.RED + "disabled" : ChatColor.GREEN + "enabled") + ChatColor.GREEN + ".");
                 return true;
             }
             case "trees" -> {
-                boolean isEnabled = treeVeinMinerEnabled.getOrDefault(playerUUID, false);
+                boolean isEnabled = treeVeinMinerEnabled.getOrDefault(playerUUID, true);
                 treeVeinMinerEnabled.put(playerUUID, !isEnabled);
                 player.sendMessage(ChatColor.GREEN + "VeinMining for trees is now " +
                         (isEnabled ? ChatColor.RED + "disabled" : ChatColor.GREEN + "enabled") + ChatColor.GREEN + ".");
