@@ -5,7 +5,7 @@ api-version: 1.21
 depend: [CloveLib]
 authors:
   - "CloveTwilight3"
-website: "https://github.mazeymoos.com/estrocord-plugin"
+website: "https://github.mazeymoos.com/EstrocordPlugin"
 
 
 # Commands
