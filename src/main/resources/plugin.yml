@@ -1,5 +1,5 @@
 name: EstrocordPlugin
-version: 3.0
+version: 3.2
 main: com.example.estrocord.EstrocordPlugin
 api-version: 1.21
 depend: [CloveLib]
