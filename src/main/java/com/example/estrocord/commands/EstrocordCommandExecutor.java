@@ -20,8 +20,17 @@ public class EstrocordCommandExecutor implements CommandExecutor {
     }
 
     private void initializeHelpPages() {
+
+        String commonMessage =
+                ChatColor.AQUA + "Es" +
+                ChatColor.LIGHT_PURPLE + "tro" +
+                ChatColor.WHITE + "cor" +
+                ChatColor.LIGHT_PURPLE + "dPl" +
+                ChatColor.AQUA + "ugin" +
+                ChatColor.WHITE + " is starting up...";
+
         // Page 1
-        helpPages.add(ChatColor.GOLD + "======== " + ChatColor.GREEN + "Estrocord Help (Page 1/2)" + ChatColor.GOLD + " ========\n"
+        helpPages.add(ChatColor.GOLD + "======== " + commonMessage + ChatColor.GREEN + " Help (Page 1/2)" + ChatColor.GOLD + " ========\n"
                 + ChatColor.YELLOW + "/setspawn" + ChatColor.WHITE + " - Set the server spawn location.\n"
                 + ChatColor.YELLOW + "/spawn" + ChatColor.WHITE + " - Teleport to the server spawn.\n"
                 + ChatColor.YELLOW + "/setbase" + ChatColor.WHITE + " - Set your personal base location.\n"
@@ -33,7 +42,7 @@ public class EstrocordCommandExecutor implements CommandExecutor {
                 + ChatColor.YELLOW + "/veinminer <ores|trees>" + ChatColor.WHITE + " - Toggle vein mining for ores or trees.\n");
 
         // Page 2
-        helpPages.add(ChatColor.GOLD + "======== " + ChatColor.GREEN + "Estrocord Help (Page 2/2)" + ChatColor.GOLD + " ========\n"
+        helpPages.add(ChatColor.GOLD + "======== " + commonMessage + ChatColor.GREEN + " Help (Page 2/2)" + ChatColor.GOLD + " ========\n"
                 + ChatColor.YELLOW + "/basefly <on|off>" + ChatColor.WHITE + " - Toggle flight within your base radius.\n"
                 + ChatColor.YELLOW + "/flyzone <x1> <y1> <z1> <x2> <y2> <z2> <name>" + ChatColor.WHITE + " - Create a communal fly zone.\n"
                 + ChatColor.YELLOW + "/rmflyzone <name>" + ChatColor.WHITE + " - Remove a communal fly zone.\n"

@@ -16,19 +16,19 @@ public class ReloadCommandExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("cutiecord.reload")) {
+        if (!sender.hasPermission("estrocord.reload")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to reload the plugin!");
             return true;
         }
 
-        sender.sendMessage(ChatColor.YELLOW + "Reloading Cutiecord configuration...");
+        sender.sendMessage(ChatColor.YELLOW + "Reloading configuration...");
 
         try {
             plugin.reloadConfig();
-            sender.sendMessage(ChatColor.GREEN + "Cutiecord configuration reloaded successfully!");
+            sender.sendMessage(ChatColor.GREEN + "Configuration reloaded successfully!");
         } catch (Exception e) {
             sender.sendMessage(ChatColor.RED + "An error occurred while reloading the configuration.");
-            plugin.getLogger().severe("Failed to reload Cutiecord configuration: " + e.getMessage());
+            plugin.getLogger().severe("Failed to reload configuration: " + e.getMessage());
             e.printStackTrace();
         }
 

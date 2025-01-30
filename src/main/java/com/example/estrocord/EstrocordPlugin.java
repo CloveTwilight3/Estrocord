@@ -6,6 +6,7 @@ import com.example.estrocord.flight.*;
 import com.example.estrocord.listeners.*;
 import com.example.estrocord.commands.*;
 import com.org.clovelib.CloveLib;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
@@ -23,7 +24,14 @@ public class EstrocordPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getLogger().info("Estrocord plugin is starting...");
+        String startupMessage =
+                ChatColor.AQUA + "Es" +
+                ChatColor.LIGHT_PURPLE + "tro" +
+                ChatColor.WHITE + "cor" +
+                ChatColor.LIGHT_PURPLE + "dPl" +
+                ChatColor.AQUA + "ugin" +
+                ChatColor.WHITE + " is starting up...";
+        getLogger().info(startupMessage);
 
         if (CloveLib.getInstance() == null) {
             getLogger().severe("CloveLib is not initialized! Ensure it is installed and loaded.");
@@ -43,7 +51,7 @@ public class EstrocordPlugin extends JavaPlugin {
         loadBases();
 
         // Check for updates
-        String githubApiUrl = "https://api.github.com/repos/MazeyMoos0022/EstrocordPlugin/releases/latest";
+        String githubApiUrl = "https://api.github.com/repos/CloveTwilight3/EstrocordPlugin/releases/latest";
         new UpdateChecker(this, githubApiUrl).checkForUpdates();
 
         // Flight
@@ -60,7 +68,15 @@ public class EstrocordPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getLogger().info("Estrocord plugin is shutting down...");
+        String shutdownMessage =
+                ChatColor.AQUA + "Es" +
+                        ChatColor.LIGHT_PURPLE + "tro" +
+                        ChatColor.WHITE + "cor" +
+                        ChatColor.LIGHT_PURPLE + "dPl" +
+                        ChatColor.AQUA + "ugin" +
+                        ChatColor.WHITE + " is shutting down...";
+
+        getLogger().info(shutdownMessage);
 
         // Save all player bases to config
         saveBases();
