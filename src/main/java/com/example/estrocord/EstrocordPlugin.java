@@ -5,7 +5,6 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-
 package com.example.estrocord;
 
 import com.example.estrocord.UpdateChecker;
