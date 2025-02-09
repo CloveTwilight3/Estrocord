@@ -52,8 +52,6 @@ To report a bug, please go the [Issues](https://github.com/mazeymoos0022/Estroco
 
 This project is licensed under the Apache 2.0 License. See the [LICENSE](https://github.com/mazeymoos0022/EstrocordPlugin/blob/main/LICENSE) file for details.
 
-There is no formal copyright on any of the names used by our Plugin.
-
 ---
 
 ## Acknowledgements
