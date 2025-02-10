@@ -47,6 +47,11 @@
       <option name="url" value="https://repo.papermc.io/repository/maven-public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="github" />
+      <option name="name" value="github" />
+      <option name="url" value="https://maven.pkg.github.com/CloveTwilight3/CloveLib" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="clovelib" />
       <option name="name" value="clovelib" />
       <option name="url" value="https://www.github.com/mazeymoos0022/CloveLib" />
