@@ -4,12 +4,12 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 # =======================
-# Estrocord Plugin Config
+# Estrocord Plugin Config - DO NOT CHANGE! THIS WILL BREAK THE PLUGIN!
 # =======================
 plugin-info:
-  version: 3.2 # Your plugin version - DO NOT CHANGE!
+  version: 3.3 # Your plugin version - Use to report issues
   authors:
-    - "MazeyMoos0022"
+    - "CloveTwilight3"
   official-repo: "https://github.mazeymoos.com/estrocord-plugin"
 
 # ========================

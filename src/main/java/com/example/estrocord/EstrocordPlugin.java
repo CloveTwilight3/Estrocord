@@ -8,6 +8,8 @@
 package com.example.estrocord;
 
 import com.example.estrocord.UpdateChecker;
+import com.example.estrocord.size.GrowthShrinkPotionCommand;
+import com.example.estrocord.size.PotionRecipeManager;
 import com.example.estrocord.spawneggs.*;
 import com.example.estrocord.flight.*;
 import com.example.estrocord.listeners.*;
@@ -53,6 +55,7 @@ public class EstrocordPlugin extends JavaPlugin {
         registerCommands();
 
         RecipeManager.registerRecipes(this);
+        PotionRecipeManager.registerRecipes(this);
 
         // Load bases from config (if saved)
         loadBases();
@@ -70,6 +73,9 @@ public class EstrocordPlugin extends JavaPlugin {
         // Veinminer
         veinminerCommandExecutor veinMinerExecutor = new veinminerCommandExecutor(this);
         getServer().getPluginManager().registerEvents(new blockVeinminerListener(this, veinMinerExecutor), this);
+
+        // Potions
+        getServer().getPluginManager().registerEvents(new PotionUseListener(this), this);
     }
 
     @Override
@@ -111,6 +117,8 @@ public class EstrocordPlugin extends JavaPlugin {
         getCommand("version").setExecutor(new VersionCommandExecutor(this));
         getCommand("estrocordreload").setExecutor(new ReloadCommandExecutor(this));
         getCommand("spawnbook").setExecutor(new SpawnBookCommand());
+        getCommand("growthpotion").setExecutor(new GrowthShrinkPotionCommand(this));
+        getCommand("shrinkpotion").setExecutor(new GrowthShrinkPotionCommand(this));
     }
 
     public Map<UUID, Long> getPlaytimeMap() {

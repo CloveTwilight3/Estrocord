@@ -5,7 +5,7 @@
 
 
 name: EstrocordPlugin
-version: 3.2
+version: 3.3
 main: com.example.estrocord.EstrocordPlugin
 api-version: 1.21
 depend: [CloveLib]
@@ -91,6 +91,14 @@ commands:
     description: Remove a communal flight zone
     usage: /rmflyzone <name>
     permission: estrocord.flyzone
+  growthpotion:
+    description: Gives you a growth potion
+    usage: /growthpotion
+    permission: estrocord.growthpotion
+  shrinkpotion:
+    description: Gives you a shrink potion
+    usage: /shrinkpotion
+    permission: estrocord.shrinkpotion
 
 # Permissions
 permissions:
@@ -126,4 +134,10 @@ permissions:
     default: true
   estrocord.flyzone:
     description: Permission to manage communal fly zones
+    default: op
+  estrocord.growthpotion:
+    description: Gives a growth potion
+    default: op
+  estrocord.shrinkpotion:
+    description: Gives a shrink potion
     default: op
