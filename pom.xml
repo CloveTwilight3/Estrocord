@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>EstrocordPlugin</artifactId>
-    <version>3.0</version>
+    <version>3.3</version>
     <packaging>jar</packaging>
 
     <name>EstrocordPlugin</name>
