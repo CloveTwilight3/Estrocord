@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.example'
+version = '3.3'
+description = 'A fun server plugin!'
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+
+    maven {
+        name = 'spigot'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+
+    maven {
+        name = 'clovelib-github'
+        url = 'https://maven.pkg.github.com/CloveTwilight3/CloveLib'
+        credentials {
+            username = System.getenv("GITHUB_USERNAME") ?: "username"
+            password = System.getenv("GITHUB_TOKEN") ?: "ghp_xxx" // set securely
+        }
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
+    compileOnly 'net.md-5:bungeecord-chat:1.20-R0.2'
+    compileOnly 'com.org.clovelib:clovelib:1.1'
+}
+
+shadowJar {
+    archiveClassifier.set('all')
+    manifest {
+        attributes(
+                'Main-Class': 'com.example.estrocord.EstrocordPlugin'
+        )
+    }
+    minimize() // Optional: strips unused classes
+}
+
+tasks.build {
+    dependsOn shadowJar
+}
