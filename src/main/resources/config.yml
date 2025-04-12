@@ -7,10 +7,10 @@
 # Estrocord Plugin Config - DO NOT CHANGE! THIS WILL BREAK THE PLUGIN!
 # =======================
 plugin-info:
-  version: 3.3 # Your plugin version - Use to report issues
+  version: 4.0.0 # Your plugin version - Use to report issues
   authors:
     - "CloveTwilight3"
-  official-repo: "https://github.mazeymoos.com/estrocord-plugin"
+  official-repo: "https://github.clovetwilight3.co.uk/estrocord-plugin"
 
 # ========================
 # Global Flight Settings

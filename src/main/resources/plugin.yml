@@ -5,13 +5,13 @@
 
 
 name: EstrocordPlugin
-version: 3.3
-main: com.example.estrocord.EstrocordPlugin
+version: 4.0.0
+main: uk.co.clovetwilight3.estrocord.EstrocordPlugin
 api-version: 1.21
 depend: [CloveLib]
 authors:
   - "CloveTwilight3"
-website: "https://github.mazeymoos.com/EstrocordPlugin"
+website: "https://github.clovetwilight3.co.uk/EstrocordPlugin"
 
 
 # Commands
