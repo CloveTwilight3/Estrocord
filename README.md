@@ -6,7 +6,7 @@ EstrocordPlugin is a Minecraft Paper Plugin designed to enhance the multiplayer 
 
 ## Bug Reporting
 
-To report a bug, please go the [Issues](https://github.com/mazeymoos0022/EstrocordPlugin/issues) Tab, and read out [Guide](https://github.com/mazeymoos0022/EstrocordPlugin/CONTRIBUTING.md) before you submit a bug
+To report a bug, please go the [ZULIP Page](https://clovetwilight3.zulipchat.com/).
 
 ---
 
