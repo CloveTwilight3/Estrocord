@@ -10,7 +10,7 @@ plugin-info:
   version: 4.0.0 # Your plugin version - Use to report issues
   authors:
     - "CloveTwilight3"
-  official-repo: "https://github.clovetwilight3.co.uk/estrocord-plugin"
+  official-repo: "https://github.com/clovetwilight3/estrocord"
 
 # ========================
 # Global Flight Settings

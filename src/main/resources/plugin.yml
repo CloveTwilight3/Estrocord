@@ -11,7 +11,7 @@ api-version: 1.21
 depend: [CloveLib]
 authors:
   - "CloveTwilight3"
-website: "https://github.clovetwilight3.co.uk/EstrocordPlugin"
+website: "https://github.com/clovetwilight3/estrocord"
 
 
 # Commands

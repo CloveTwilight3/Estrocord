@@ -1,10 +1,8 @@
 /*
- * Copyright (c) 2025 Mazey-Jessica Emily Twilight
- * Copyright (c) 2025 UnifiedGaming Systems Ltd (Company Number: 16108983)
+ * Copyright (c) 2025 Clove Nytrix Doughmination Twilight
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  */
-
 
 package uk.co.clovetwilight3.estrocord.commands;
 
