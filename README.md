@@ -62,3 +62,10 @@ This project is licensed under the Apache 2.0 License. See the [LICENSE](https:/
 ---
 
 Feel free to suggest additional features or report issues on the [Issues](https://github.mazeymoos.com/EstrocordPlugin/issues) page.
+
+---
+
+# Contributors
+<a href="https://github.com/CloveTwilight3/clovetwilight3/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=CloveTwilight3/Estrocord" />
+</a>
