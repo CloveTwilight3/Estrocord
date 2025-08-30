@@ -50,22 +50,15 @@ To report a bug, please go the [ZULIP Page](https://clovetwilight3.zulipchat.com
 
 ## License
 
-This project is licensed under the Apache 2.0 License. See the [LICENSE](https://github.com/mazeymoos0022/EstrocordPlugin/blob/main/LICENSE) file for details.
+This project is licensed under the Apache 2.0 License. See the [LICENSE](https://github.com/clovetwilight3/Estrocord/blob/main/LICENSE) file for details.
 
 ---
 
-## Acknowledgements
-
-- Special thanks to the PaperMC community for their tools and support.
-- Inspiration from various members of the [Cutiecord Discord Server](https://www.discord.gg/cutiecord) (Not affiliated!)
-
----
-
-Feel free to suggest additional features or report issues on the [Issues](https://github.mazeymoos.com/EstrocordPlugin/issues) page.
+Feel free to suggest additional features or report issues on the [Issues](https://github.com/clovetwilight3/EstrocordPlugin/issues) page.
 
 ---
 
 # Contributors
-<a href="https://github.com/CloveTwilight3/clovetwilight3/graphs/contributors">
+<a href="https://github.com/CloveTwilight3/Estrocord/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=CloveTwilight3/Estrocord" />
 </a>
