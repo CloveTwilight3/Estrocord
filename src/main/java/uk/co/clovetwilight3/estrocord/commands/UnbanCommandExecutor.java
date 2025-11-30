@@ -13,7 +13,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import uk.co.clovetwilight3.clovelib.*;
+import uk.co.clovetwilight3.clovelib.Main;
 import uk.co.clovetwilight3.clovelib.BanData;
 import uk.co.clovetwilight3.estrocord.EstrocordPlugin;
 

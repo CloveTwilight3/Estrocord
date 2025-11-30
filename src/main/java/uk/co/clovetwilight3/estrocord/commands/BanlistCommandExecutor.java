@@ -10,7 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import uk.co.clovetwilight3.clovelib;
+import uk.co.clovetwilight3.CloveLib;
 import uk.co.clovetwilight3.clovelib.BanData;
 import uk.co.clovetwilight3.estrocord.EstrocordPlugin;
 
