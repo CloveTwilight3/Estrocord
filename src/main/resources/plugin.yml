@@ -1,21 +1,36 @@
-# Copyright (c) 2025 Mazey-Jessica Emily Twilight
-# Copyright (c) 2025 UnifiedGaming Systems Ltd (Company Number: 16108983)
-# Licensed under the Apache License, Version 2.0
-# http://www.apache.org/licenses/LICENSE-2.0
-
+# Copyright (c) 2025 Clove Twilight
+# Licensed under the MIT License
 
 name: EstrocordPlugin
-version: 4.0.0
+version: 5.0.0
 main: uk.co.clovetwilight3.estrocord.EstrocordPlugin
-api-version: 1.21
+api-version: '1.21'
 depend: [CloveLib]
 authors:
   - "CloveTwilight3"
-website: "https://github.com/clovetwilight3/estrocord"
+website: "https://github.com/CloveLib/Estrocord"
 
 
 # Commands
 commands:
+  # Ban commands (via CloveLib)
+  ban:
+    description: Ban a player from the server
+    usage: /ban <player> [reason]
+    permission: estrocord.ban
+    permission-message: §cYou do not have permission to ban players!
+  unban:
+    description: Unban a player from the server
+    usage: /unban <player>
+    permission: estrocord.unban
+    permission-message: §cYou do not have permission to unban players!
+  banlist:
+    description: View all banned players
+    usage: /banlist
+    permission: estrocord.banlist
+    permission-message: §cYou do not have permission to view the ban list!
+
+  # Existing commands
   spawnbook:
     description: Gives a book showing all mob crafts.
     usage: /spawnbook
@@ -28,8 +43,8 @@ commands:
     description: Teleport to the spawn location
   estrocordreload:
     description: Reload the estrocord plugin configuration
-    usage: /estrocordcordreload
-    permission: estrocordcord.reload
+    usage: /estrocordreload
+    permission: estrocord.reload
     permission-message: §cYou do not have permission to reload this plugin!
   tpask:
     description: Ask to tp to another player
@@ -102,8 +117,17 @@ commands:
 
 # Permissions
 permissions:
+  estrocord.ban:
+    description: Allows banning players
+    default: op
+  estrocord.unban:
+    description: Allows unbanning players
+    default: op
+  estrocord.banlist:
+    description: Allows viewing the ban list
+    default: op
   estrocord.reload:
-    description: Allows reloading of the Cutiecord plugin.
+    description: Allows reloading of the Estrocord plugin.
     default: op
   estrocord.visitbase:
     description: Allows players to teleport to other players' bases.

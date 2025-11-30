@@ -1,16 +1,14 @@
-# Copyright (c) 2025 Mazey-Jessica Emily Twilight
-# Copyright (c) 2025 UnifiedGaming Systems Ltd (Company Number: 16108983)
-# Licensed under the Apache License, Version 2.0
-# http://www.apache.org/licenses/LICENSE-2.0
+# Copyright (c) 2025 Clove Twilight
+# Licensed under the MIT License
 
 # =======================
 # Estrocord Plugin Config - DO NOT CHANGE! THIS WILL BREAK THE PLUGIN!
 # =======================
 plugin-info:
-  version: 4.0.0 # Your plugin version - Use to report issues
+  version: 5.0.0 # Your plugin version - Use to report issues
   authors:
     - "CloveTwilight3"
-  official-repo: "https://github.com/clovetwilight3/estrocord"
+  official-repo: "https://github.com/CloveLib/Estrocord"
 
 # ========================
 # Global Flight Settings

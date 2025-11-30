@@ -1,7 +1,6 @@
 /*
- * Copyright (c) 2025 Clove Nytrix Doughmination Twilight
- * Licensed under the Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Copyright (c) 2025 Clove Twilight
+ * Licensed under the MIT Licence
  */
 
 package uk.co.clovetwilight3.estrocord;
@@ -15,9 +14,6 @@ import uk.co.clovetwilight3.estrocord.listeners.blockVeinminerListener;
 import uk.co.clovetwilight3.estrocord.size.GrowthShrinkPotionCommand;
 import uk.co.clovetwilight3.estrocord.size.PotionRecipeManager;
 import uk.co.clovetwilight3.estrocord.spawneggs.*;
-import uk.co.clovetwilight3.estrocord.flight.*;
-import uk.co.clovetwilight3.estrocord.listeners.*;
-import uk.co.clovetwilight3.estrocord.commands.*;
 import uk.co.clovetwilight3.CloveLib;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
@@ -26,8 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.bukkit.Location;
-import uk.co.clovetwilight3.estrocord.spawneggs.RecipeManager;
-import uk.co.clovetwilight3.estrocord.spawneggs.SpawnBookCommand;
 
 public class EstrocordPlugin extends JavaPlugin {
 
@@ -41,16 +35,16 @@ public class EstrocordPlugin extends JavaPlugin {
         // Plugin startup logic
         String startupMessage =
                 ChatColor.AQUA + "Es" +
-                ChatColor.LIGHT_PURPLE + "tro" +
-                ChatColor.WHITE + "cor" +
-                ChatColor.LIGHT_PURPLE + "dPl" +
-                ChatColor.AQUA + "ugin" +
-                ChatColor.WHITE + " is starting up...";
+                        ChatColor.LIGHT_PURPLE + "tro" +
+                        ChatColor.WHITE + "cor" +
+                        ChatColor.LIGHT_PURPLE + "dPl" +
+                        ChatColor.AQUA + "ugin" +
+                        ChatColor.WHITE + " is starting up...";
         getLogger().info(startupMessage);
 
         if (CloveLib.getInstance() == null) {
             getLogger().severe("CloveLib is not initialized! Ensure it is installed and loaded.");
-            getServer().getPluginManager().disablePlugin(this); // Disable plugin if critical
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
@@ -125,6 +119,17 @@ public class EstrocordPlugin extends JavaPlugin {
         getCommand("spawnbook").setExecutor(new SpawnBookCommand());
         getCommand("growthpotion").setExecutor(new GrowthShrinkPotionCommand(this));
         getCommand("shrinkpotion").setExecutor(new GrowthShrinkPotionCommand(this));
+
+        // Ban commands (via CloveLib)
+        BanCommandExecutor banExecutor = new BanCommandExecutor(this);
+        getCommand("ban").setExecutor(banExecutor);
+        getCommand("ban").setTabCompleter(banExecutor);
+
+        UnbanCommandExecutor unbanExecutor = new UnbanCommandExecutor(this);
+        getCommand("unban").setExecutor(unbanExecutor);
+        getCommand("unban").setTabCompleter(unbanExecutor);
+
+        getCommand("banlist").setExecutor(new BanlistCommandExecutor(this));
     }
 
     public Map<UUID, Long> getPlaytimeMap() {
@@ -146,7 +151,7 @@ public class EstrocordPlugin extends JavaPlugin {
     }
 
     public Location getBaseLocation(UUID playerUUID) {
-        return bases.get(playerUUID); // Retrieve the base location from the map
+        return bases.get(playerUUID);
     }
 
     public boolean hasBase(UUID playerUUID) {
